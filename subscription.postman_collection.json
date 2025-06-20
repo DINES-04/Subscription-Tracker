@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "af87e3d2-43ee-4f84-8a22-5bb04d9be6ae",
+		"name": "subscription",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36983269"
+	},
+	"item": [
+		{
+			"name": "autherication",
+			"item": [
+				{
+					"name": "sign-up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ashwin\",\n    \"email\": \"ashwin@gamil.com\",\n    \"password\":\"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/auth/sign-up",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"sign-up"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "sgn-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jana@gamil.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/auth/sign-in",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single user (no token)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/users/6813b2fb4e854113d01f1e65",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"6813b2fb4e854113d01f1e65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2ODEzNjdlZGJhNWViYTllYWY2MDk5ZGMiLCJlbWFpbCI6ImphbmFAZ2FtaWwuY29tIiwiaWF0IjoxNzQ2MjUzOTk2LCJleHAiOjE3NDYzNDAzOTZ9.sIJFdzdiZ7ozhiKbkkJnCCMaHK7srh_nnxIIPKSJPts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/users/681367edba5eba9eaf6099dc",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"681367edba5eba9eaf6099dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post the user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" :\"varun\",\r\n    \"email\": \"varun@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arcjet",
+			"item": [
+				{
+					"name": "rate limit execeeded",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Name</th>\r",
+									"        <th>Email</th>\r",
+									"        <th>Created At</th>\r",
+									"        <th>Updated At</th>\r",
+									"        <th>__v</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{response.data._id}}</td>\r",
+									"        <td>{{response.data.name}}</td>\r",
+									"        <td>{{response.data.email}}</td>\r",
+									"        <td>{{response.data.createdAt}}</td>\r",
+									"        <td>{{response.data.updatedAt}}</td>\r",
+									"        <td>{{response.data.__v}}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return { response: pm.response.json() }\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2ODEzNjdlZGJhNWViYTllYWY2MDk5ZGMiLCJlbWFpbCI6ImphbmFAZ2FtaWwuY29tIiwiaWF0IjoxNzQ2MjUzOTk2LCJleHAiOjE3NDYzNDAzOTZ9.sIJFdzdiZ7ozhiKbkkJnCCMaHK7srh_nnxIIPKSJPts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://Localhost:5500/api/v1/users/681367edba5eba9eaf6099dc/",
+							"protocol": "http",
+							"host": [
+								"Localhost"
+							],
+							"port": "5500",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"681367edba5eba9eaf6099dc",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subscription",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "running the local host",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://Localhost:5500",
+					"protocol": "http",
+					"host": [
+						"Localhost"
+					],
+					"port": "5500"
+				}
+			},
+			"response": []
+		}
+	]
+}
